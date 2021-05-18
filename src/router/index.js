@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store/index.js'
+
 import Login from '../views/Login.vue'
+import Welcome from '../views/Welcome.vue'
+import Home from '../views/Home.vue'
+import Users from '../components/users/Users.vue'
+import Rights from '../components/rights/Rights.vue'
 
 Vue.use(VueRouter)
 
@@ -17,18 +22,31 @@ const routes = [{
 	{
 		path: '/home',
 		name: 'Home',
-		meta:{
-			title:'首页'
+		meta: {
+			title: '首页'
 		},
-		component: () => import('../views/Home.vue'),
-		children:[
+		component: Home,
+		redirect: '/welcome',
+		children: [{
+				path: '/welcome',
+				component: Welcome,
+				name: "Welcome"
+			},
 			{
-				path:'/users',
-				name:'Users',
-				meta:{
-					title:'用户列表'
+				path: '/users',
+				name: 'Users',
+				meta: {
+					title: '用户列表'
 				},
-				component:() => import('../components/users/Users.vue')
+				component: Users
+			},
+			{
+				path:'/rights',
+				name:'Rights',
+				component:Rights,
+				meta:{
+					title:'权限列表'
+				}
 			}
 		]
 	}

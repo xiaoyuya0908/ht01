@@ -107,6 +107,7 @@
 			collapsemenus() {
 				this.iscollapse = !this.iscollapse
 			},
+			// 面包屑导航获取路由s
 			getBranRoute() {
 				//console.log(this.$route);
 				const routeName = this.$route.matched.filter(v => v.name)
